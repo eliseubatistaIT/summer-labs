@@ -1,4 +1,4 @@
-import { AppScreen, CustomButton } from "../../components";
+import { AppScreen, CustomButton } from "@components";
 import { useScreen1Helper } from "./screen1.hook";
 
 export const Screen1 = () => {
@@ -7,6 +7,7 @@ export const Screen1 = () => {
   return (
     <AppScreen>
       <p>Screen 1</p>
+
       <CustomButton
         text="Go To Screen 2"
         onClick={() => goToScreen2()}

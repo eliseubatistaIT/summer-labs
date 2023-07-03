@@ -1,4 +1,4 @@
-import { AppScreen, CustomButton } from "../../components";
+import { AppScreen, CustomButton } from "@components";
 import { useScreen2Helper } from "./screen2.hook";
 
 export const Screen2 = () => {
