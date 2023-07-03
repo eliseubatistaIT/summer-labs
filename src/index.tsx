@@ -15,7 +15,6 @@ root.render(
         * {
           margin: 0;
           padding: 0;
-          box-sizing: border-box;
         }
 
         html,
@@ -28,6 +27,11 @@ root.render(
         #root {
           width: 100%;
           height: 100%;
+          background: #f7e5d2;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
         }
 
         div {

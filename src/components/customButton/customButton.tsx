@@ -1,3 +1,5 @@
+import { CSSProperties } from "react";
+
 type CustomButtonVariant = "primary" | "secondary";
 
 export interface CustomButtonProps {
@@ -6,10 +8,11 @@ export interface CustomButtonProps {
   endContent?: React.ReactNode;
   variant: CustomButtonVariant;
   onClick: () => void;
+  styles?: CSSProperties;
 }
 
 export const CustomButton = (props: CustomButtonProps) => {
-  const { text, startContent, endContent, variant, onClick } = props;
+  const { text, startContent, endContent, variant, onClick, styles } = props;
 
   return (
     <button
@@ -21,6 +24,7 @@ export const CustomButton = (props: CustomButtonProps) => {
         padding: "15px 20px",
         borderRadius: "15px",
         color: variant === "primary" ? "#ffffff" : "#000000",
+        ...styles,
       }}
       onClick={() => onClick()}
     >

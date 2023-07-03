@@ -8,9 +8,16 @@ export const App = () => {
     <div
       style={{
         width: "100%",
-        minHeight: "100%",
-        overflowX: "hidden",
-        overflowY: "auto",
+        height: "100%",
+        maxWidth: "390px",
+        maxHeight: "844px",
+        border: "10px solid #000000",
+        borderBottom: "55px solid #000000",
+        borderTop: "35px solid #000000",
+        borderRadius: "15px",
+        background: "#ffffff",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
       <Routes>
