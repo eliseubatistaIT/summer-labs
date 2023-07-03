@@ -5,7 +5,7 @@ export const useScreen1Helper = () => {
   const { goTo } = useCustomNavigation();
 
   const handleGoToScreen2 = () => {
-    goTo(ScreenPaths.page2);
+    goTo(ScreenPaths.screen2);
   };
 
   return {
