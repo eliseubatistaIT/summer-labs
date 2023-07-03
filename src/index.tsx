@@ -42,7 +42,7 @@ root.render(
 
         p {
           color: inherit;
-          font-size: 24px;
+          font-size: 16px;
         }
       `}
     />

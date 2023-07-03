@@ -1,9 +1,31 @@
 import { Route, Routes } from "react-router-dom";
-import { Screen2 } from "./screens";
-import { ScreenPaths } from "./constants";
-import { Screen1 } from "./screens/screen1";
+import {
+  Challenge1,
+  Challenge2,
+  Challenge2_5,
+  HomeScreen,
+  Project,
+} from "@screens";
+import { ScreenPaths } from "@constants";
+import React from "react";
+import { useBaseStore } from "./store/base";
+import { useCustomNavigation } from "./hooks/useCustomNavigation";
+import { useHistoryStore } from "./store/history";
 
 export const App = () => {
+  const { goTo } = useCustomNavigation();
+  const { history } = useHistoryStore();
+
+  React.useEffect(() => {
+    console.log("App started");
+
+    if (history.length < 1) {
+      goTo(ScreenPaths.home);
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [history]);
+
   return (
     <div
       style={{
@@ -21,8 +43,11 @@ export const App = () => {
       }}
     >
       <Routes>
-        <Route path={ScreenPaths.screen1} element={<Screen1 />} />
-        <Route path={ScreenPaths.screen2} element={<Screen2 />} />
+        <Route path={ScreenPaths.home} element={<HomeScreen />} />
+        <Route path={ScreenPaths.challenge1} element={<Challenge1 />} />
+        <Route path={ScreenPaths.challenge2} element={<Challenge2 />} />
+        <Route path={ScreenPaths.challenge2_5} element={<Challenge2_5 />} />
+        <Route path={ScreenPaths.project} element={<Project />} />
       </Routes>
     </div>
   );

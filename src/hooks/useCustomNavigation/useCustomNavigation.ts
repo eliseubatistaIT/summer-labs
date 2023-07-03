@@ -1,3 +1,5 @@
+import { useHistoryStore } from "@store";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 export interface UseCustomNavigationProps {
@@ -7,14 +9,29 @@ export interface UseCustomNavigationProps {
 
 export const useCustomNavigation = (): UseCustomNavigationProps => {
   const navigate = useNavigate();
+  const { addToHistory, popFromHistory, history } = useHistoryStore();
 
-  const goBack = (steps?: number) => {
-    navigate(steps || 1);
-  };
+  const goTo = React.useCallback(
+    (screenPath: string, alsoAddToHistory = true) => {
+      navigate(screenPath, { replace: true });
 
-  const goTo = (screenPath: string) => {
-    navigate(screenPath, { replace: true });
-  };
+      if (alsoAddToHistory) {
+        addToHistory(screenPath);
+      }
+    },
+    [addToHistory, navigate]
+  );
+
+  const goBack = React.useCallback(
+    (steps?: number) => {
+      const finalSteps = steps || 1;
+      const resultScreen = history[history.length - 1 - finalSteps];
+
+      popFromHistory(finalSteps);
+      goTo(resultScreen, false);
+    },
+    [goTo, history, popFromHistory]
+  );
 
   return {
     goBack,

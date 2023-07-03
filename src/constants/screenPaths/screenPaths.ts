@@ -1,4 +1,7 @@
 export const ScreenPaths = {
-  screen1: "/",
-  screen2: "/screen2",
+  home: "/",
+  challenge1: "/challenge1",
+  challenge2: "/challenge2",
+  challenge2_5: "/challenge2_5",
+  project: "/project",
 };

@@ -1,5 +1,5 @@
-import PhoneImg from "./phone.png";
+import BackImg from "./back.png";
 
 export const ImageAssets = {
-  phone: PhoneImg,
+  back: BackImg,
 };

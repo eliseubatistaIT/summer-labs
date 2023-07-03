@@ -1,29 +1,27 @@
 import { CSSProperties } from "react";
 
-type CustomButtonVariant = "primary" | "secondary";
-
 export interface CustomButtonProps {
   text?: string;
   startContent?: React.ReactNode;
   endContent?: React.ReactNode;
-  variant: CustomButtonVariant;
   onClick: () => void;
   styles?: CSSProperties;
 }
 
 export const CustomButton = (props: CustomButtonProps) => {
-  const { text, startContent, endContent, variant, onClick, styles } = props;
+  const { text, startContent, endContent, onClick, styles } = props;
 
   return (
     <button
       style={{
         display: "flex",
         flexDirection: "row",
-        background: variant === "primary" ? "#3e56df" : "#ffffff",
-        border: variant === "primary" ? "none" : "3px solid #3e56df",
+        background: "#3e56df",
         padding: "15px 20px",
         borderRadius: "15px",
-        color: variant === "primary" ? "#ffffff" : "#000000",
+        color: "#ffffff",
+        width: "300px",
+        height: "55px",
         ...styles,
       }}
       onClick={() => onClick()}
@@ -33,7 +31,7 @@ export const CustomButton = (props: CustomButtonProps) => {
           {startContent}
         </div>
       )}
-      {text && <p>{text}</p>}
+      {text && <p style={{ textAlign: "center", flex: 1 }}>{text}</p>}
       {endContent && (
         <div style={{ maxWidth: "30px", maxHeight: "30px", margin: "auto" }}>
           {endContent}
