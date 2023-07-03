@@ -3,29 +3,25 @@ import { createJSONStorage } from "zustand/middleware";
 import { StoreHelper } from "../store.helper";
 
 export interface BaseState {
-  favorites: number[];
+  theme: "light" | "dark";
 }
 
 const initialState: BaseState = {
-  favorites: [],
+  theme: "light",
 };
 
 interface UseBaseStoreOutput extends BaseState {
-  addFavorite: (id: number) => void;
-  //TODO: Create remove favorite
+  updateBaseStore: (data: Partial<BaseState>) => void;
 }
 
 export const useBaseStore = StoreHelper.createStore<UseBaseStoreOutput>(
   (set) => ({
     ...initialState,
-    addFavorite: function (id: number) {
+    updateBaseStore: function (data: Partial<BaseState>) {
       set(
-        produce((state: BaseState) => ({
-          ...state,
-          favorites: [...state.favorites, id],
-        })),
+        produce((state: BaseState) => ({ ...state, ...data })),
         false,
-        "addFavorite"
+        "updateBaseStore"
       );
     },
   }),
