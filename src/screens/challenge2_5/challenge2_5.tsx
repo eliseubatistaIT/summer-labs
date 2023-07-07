@@ -7,7 +7,7 @@ export const Challenge2_5 = () => {
   return (
     <AppScreen header={{ title: "Challenge 2_5" }}>
       <CustomButton
-        text="Say Hello"
+        text="(Resolvido no exercício 2)"
         onClick={() => sayHello()}
         styles={{ margin: "auto auto 20px auto" }}
       />
