@@ -26,7 +26,25 @@ interface Sprites {
 export interface Pokemon {
     abilities: Ability[];
     name: string;
+    index: number; // número do pokemon na pokedex
     sprites: Sprites; // criar estrutura das sprites
     stats: Stats;
     types: string[];
+}
+
+export function DrawAllSprites({sprites}: {sprites: Sprites}) {
+    return (
+        <>
+            <img></img>
+        </>
+    );
+}
+
+export function DrawPokemon(pokemon: Pokemon) {
+    <>
+      <label>
+        Pokemon Name: {pokemon.name}
+      </label>
+      <DrawAllSprites sprites={pokemon.sprites}/>
+    </>
 }
