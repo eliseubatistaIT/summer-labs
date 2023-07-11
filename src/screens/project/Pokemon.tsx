@@ -33,26 +33,19 @@ export interface Pokemon {
 }
 
 export function DrawAllSprites({ sprites }: { sprites: Sprites }) {
-  return ( // perguntar sobre as imagens facultativas
+  return (
+    // perguntar sobre as imagens facultativas
     <>
       <div>
-        <img
-            src = {sprites.back_default}
-            alt = "Back-Default"
-        />
-        <img
-            src = {sprites.back_female}
-            alt = "Back-Female"
-        />
+        <img src={sprites.back_default} alt="Back-Default" />
+        {sprites.back_female && (
+          <img src={sprites.back_female} alt="Back-Female" />
+        )}
       </div>
-      <img
-        src = {sprites.back_default}
-        alt = "Back-Default"
-      />
-      <img
-        src = {sprites.back_default}
-        alt = "Back-Default"
-      />
+      <div>
+        <img src={sprites.back_default} alt="Back-Default" />
+        <img src={sprites.back_default} alt="Back-Default" />
+      </div>
     </>
   );
 }
@@ -60,19 +53,15 @@ export function DrawAllSprites({ sprites }: { sprites: Sprites }) {
 export function DrawPokemon(pokemon: Pokemon) {
   return (
     <>
-        <label>
+      <label>
         Pokemon Name: {pokemon.name}; Nº: {pokemon.index}
-        </label>
-        <DrawStats stats={pokemon.stats}/>
-        <DrawAllSprites sprites={pokemon.sprites} />
+      </label>
+      <DrawStats stats={pokemon.stats} />
+      <DrawAllSprites sprites={pokemon.sprites} />
     </>
   );
 }
 
-function DrawStats({ stats } : {stats: Stats}) {
-    return(
-        <>
-
-        </>
-    );
+function DrawStats({ stats }: { stats: Stats }) {
+  return <></>;
 }

@@ -13,60 +13,24 @@ interface PokemonListResult {
 }
 
 export const Project = () => {
-  // Saber se o utilizador já fez algum pedido
-  const [withRequest, setRequest] = useState(false); // no inicio ainda não fez um pedido
-  // Início do programa - mostrar os pokemons em sequência
-  const [initial, setInitial] = useState(true);
-  // Armazenados valores de pedido do utilizador
-  const [limit, setLimit] = useState<number>(20); // nº de pokemons que vai buscar
-  const [offset, setOffset] = useState<number>(0); // indice donde começa
 
-  const pokemonsData = []; // Dados de todos os pokemons desejados
+  const {
+    pokemons,
+    fetchPokemons,
+    handleLimitChange,
+    handleOffsetChange,
+    limit, offset
+  } = useProjectHelper();
+  
+  console.log(pokemons[1]?.name);
 
-  /* CUIDADOS a ter
-     - só 
-  */
-
-  const { sayHello } = useProjectHelper();
-
-  function handleLimitChange(e: any) {
-    let n = e.target.valueAsNumber;
-    if (n <= 20 || n >= 0) {
-      setLimit(e.target.valueAsNumber);
-    }
-  }
-
-  function handleOffsetChange(e: any) {
-    let n = e.target.valueAsNumber;
-    if (n > 1280) {
-
-    }
-    setOffset(e.target.valueAsNumber);
-  }
-
-  const fetchPokemons = async (limit: number, offset: number) => {
-    const fetchResult = await fetch("https://pokeapi.co/api/v2/pokemon");
-    const fetchJSON = await fetchResult.json();
-    //console.log(fetchJSON);
-    for (let i = 0; i < fetchJSON.results.length; i++) {
-      // console.log(fetchJSON.results[i]);
-      const pokeResult = await fetch(fetchJSON.results[i].url);
-      const pokeJSON = await pokeResult.json();
-      pokemonsData.push(pokeJSON); // CUIDADO, só se recebem 20 pokemons de cada vez
-    }
-    //console.log(pokemonsData);
-  };
-
-  React.useEffect(() => {
-    fetchPokemons(limit, offset);
-  }, []);
 
   return (
     <AppScreen header={{ title: "Project - Poke API - REACT" }}>
       <img
         src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png"
         alt="PokeAPI"
-        max-width="50%"
+        width= "60%"
       />
       <p></p>
       <h2>Only 20 pokemons are shown at the same time</h2>
@@ -87,7 +51,7 @@ export const Project = () => {
           <br></br>
         </label>
       </div>
-      <button>See results</button>
+      <button onClick={() => {fetchPokemons()}}> See results</button>
     </AppScreen>
   );
 };
