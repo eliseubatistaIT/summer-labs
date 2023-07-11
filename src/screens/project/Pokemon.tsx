@@ -23,18 +23,29 @@ interface Sprites {
   front_shiny_female?: string;
 }
 
+interface Move {
+  name: string;
+  url: string;
+}
+
+interface Type {
+  name: string;
+  url: string;
+}
+
 export interface Pokemon {
   abilities: Ability[];
   name: string;
-  index: number; // número do pokemon na pokedex
+  id: number; // número do pokemon na pokedex
   sprites: Sprites; // criar estrutura das sprites
   stats: Stats;
-  types: string[];
+  types: Type[];
+  base_experience: number;
+  moves: Move[];
 }
 
 export function DrawAllSprites({ sprites }: { sprites: Sprites }) {
   return (
-    // perguntar sobre as imagens facultativas
     <>
       <div>
         <img src={sprites.back_default} alt="Back-Default" />
@@ -43,25 +54,76 @@ export function DrawAllSprites({ sprites }: { sprites: Sprites }) {
         )}
       </div>
       <div>
-        <img src={sprites.back_default} alt="Back-Default" />
-        <img src={sprites.back_default} alt="Back-Default" />
+        <img src={sprites.back_shiny} alt="Back-Shiny" />
+        {sprites.back_shiny_female && (
+          <img src={sprites.back_shiny_female} alt="Back-Shiny-Female" />
+        )}
+      </div>
+      <div>
+        <img src={sprites.front_default} alt="Front-Default" />
+        {sprites.front_female && (
+          <img src={sprites.front_female} alt="Front-Female" />
+        )}
+      </div>
+      <div>
+        <img src={sprites.front_shiny} alt="Front-Shiny" />
+        {sprites.front_shiny_female && (
+          <img src={sprites.front_shiny_female} alt="Front-Shiny-Female" />
+        )}
       </div>
     </>
   );
 }
 
-export function DrawPokemon(pokemon: Pokemon) {
+/*
+*/
+function DrawPokemon(pokemon: Pokemon) {
   return (
     <>
       <label>
-        Pokemon Name: {pokemon.name}; Nº: {pokemon.index}
+        Pokemon Name: {pokemon.name}; Nº: {pokemon.id}
       </label>
+      {/* {!pokemon.types[1].name && <p>Type: {pokemon.types[0].name}</p>}
+      {pokemon.types[1].name && <p>Types: {pokemon.types[0].name}, {pokemon.types[1].name}</p>} */}
+      <table />
       <DrawStats stats={pokemon.stats} />
       <DrawAllSprites sprites={pokemon.sprites} />
     </>
   );
 }
 
+export function DrawAllPokemons({pokemons}: {pokemons: Pokemon[]}) {
+  return (
+    <>
+    {pokemons.map((pokemon) => DrawPokemon(pokemon))}
+    </>
+    );
+}
+
 function DrawStats({ stats }: { stats: Stats }) {
-  return <></>;
+  const columns = [
+    "HP (Health Points)",
+    "Attack",
+    "Defense",
+    "Special Attack",
+    "Special Defense",
+    "Speed",
+  ];
+  const values = [
+    stats.hp,
+    stats.attack,
+    stats.defense,
+    stats.special_attack,
+    stats.special_defense,
+    stats.speed,
+  ];
+  return (
+    <>
+      <div>
+        <table>
+          <tbody>{columns}</tbody>
+        </table>
+      </div>
+    </>
+  );
 }

@@ -19,17 +19,16 @@ export const useProjectHelper = () => {
   
     function handleLimitChange(e: any) {
       let n = e.target.valueAsNumber;
-      if (n <= 20 || n >= 0) {
-        setLimit(e.target.valueAsNumber);
-      }
+      if (n > 20) setLimit(20);
+      else if (n < 0) setLimit(0);
+      else setLimit(e.target.valueAsNumber);
     }
   
     function handleOffsetChange(e: any) {
       let n = e.target.valueAsNumber;
-      if (n > 1280) {
-  
-      }
-      setOffset(e.target.valueAsNumber);
+      if (n > 1280) setOffset(1280);
+      else if (n < 0) setOffset(0);
+      else setOffset(e.target.valueAsNumber);
     }
   
     const fetchPokemons = async () => {
@@ -51,6 +50,10 @@ export const useProjectHelper = () => {
       //   return newPokemonsData.indexOf(element) !== index;
       // });
       //console.log(pokemons);
+      
+      
+      // a técnica utilizada acima já faz grande parte do trabalho
+      // MAS, é preciso fazer algumas correções
     };
   
     React.useEffect(() => {

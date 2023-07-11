@@ -40,6 +40,7 @@ export const App = () => {
         background: "#ffffff",
         position: "relative",
         overflow: "hidden",
+        textAlign: "center",
       }}
     >
       <Routes>
