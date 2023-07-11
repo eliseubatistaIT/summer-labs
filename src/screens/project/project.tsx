@@ -22,7 +22,7 @@ export const Project = () => {
     offset,
   } = useProjectHelper();
 
-  console.log(pokemons[1]?.types);
+  console.log(pokemons[1]?.stats);
 
   return (
     <AppScreen header={{ title: "Project - Poke API - REACT" }}>
@@ -34,12 +34,12 @@ export const Project = () => {
       {""}
       <h2>Only 20 pokemons are shown at the same time</h2>
       {""}
-      <p>Scroll through the page to see more pokemon</p>
-      <p>
-        OR Search write in the 2 spaces below to search for the pokemons you
-        want
-      </p>
+      <h4>Scroll through the page to see more pokemon</h4>
+      <h4>
+        OR Write in the 2 spaces below to search for the pokemons you want
+      </h4>
       {""}
+      <p>---------------------------------</p>
       <div>
         <label>
           (Number of pokemons you want to get; <i>MAXIMUM = 20</i>) Limit:

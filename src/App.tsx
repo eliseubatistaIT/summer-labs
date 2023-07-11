@@ -41,6 +41,8 @@ export const App = () => {
         position: "relative",
         overflow: "hidden",
         textAlign: "center",
+        marginLeft: "auto",
+        marginRight: "auto",
       }}
     >
       <Routes>
