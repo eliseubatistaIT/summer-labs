@@ -18,7 +18,7 @@ function giveTypeColours(type: string | undefined) {
   else if (type == "ice") r = "#c1f0f7";
   else if (type == "dragon") r = "#725ef7";
   else if (type == "bug") r = "#b7d450";
-  else if (type == "poison") r = "#79219c";
+  else if (type == "poison") r = "#ac65fc";
   else if (type == "steel") r = "#8a848c";
   else if (type == "ground") r = "#c7831e";
   else if (type == "rock") r = "#a85f05";
@@ -55,7 +55,8 @@ export const PokemonCard = (props: PokemonCardProps) => {
           textAlign: "center",
           marginLeft: "auto",
           marginRight: "auto",
-        }}
+          textShadow: "0.75px 0.75px 1.5px #818385",
+        }} // outline: "2px dashed blue",
       >
         <p>--------------------</p>
         <label>
