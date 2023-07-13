@@ -20,6 +20,7 @@ export const Project = () => {
     handleOffsetChange,
     limit,
     offset,
+    goToPokeDetails,
   } = useProjectHelper();
 
   console.log(pokemons[1]?.stats);
@@ -85,10 +86,16 @@ export const Project = () => {
           fetchPokemons();
         }}
       >
-        {" "}
         See results
       </button>
-      {""}
+      <CustomButton
+        text="See Results"
+        onClick={() => {
+          fetchPokemons();
+          goToPokeDetails();
+        }}
+        styles={{ margin: "0 auto 15px auto" }}
+      />
       <DrawAllPokemons pokemons={pokemons} />
     </AppScreen>
   );

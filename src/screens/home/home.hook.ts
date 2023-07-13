@@ -17,7 +17,7 @@ export const useHomeHelper = () => {
   };
 
   const handleGoToProject = () => {
-    goTo(ScreenPaths.project);
+    goTo(ScreenPaths.project.pokeapi);
   };
 
   return {

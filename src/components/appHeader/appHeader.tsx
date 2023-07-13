@@ -19,7 +19,9 @@ export const AppHeader = ({ title, hideBack }: AppHeaderProps) => {
         boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 0",
         alignItems: "center",
         justifyContent: "center",
-      }}
+        background: "#ffffff",
+        zIndex: "100",
+      }} // position: "fixed",
     >
       {!hideBack && (
         <img

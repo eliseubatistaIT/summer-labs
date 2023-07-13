@@ -40,6 +40,9 @@ export const PokemonCard = (props: PokemonCardProps) => {
     <>
       <p>----------------------------------</p>
       <div
+        onClick={() => {
+          console.log("Clicked");
+        }}
         style={{
           width: "100%",
           height: "100%",
