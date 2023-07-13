@@ -4,8 +4,6 @@ import { ScreenPaths } from "@constants";
 import { useCustomNavigation } from "@hooks";
 
 export const useProjectHelper = () => {
-  // Saber se o utilizador já fez algum pedido
-  const [withRequest, setRequest] = useState(false); // no inicio ainda não fez um pedido
   // Início do programa - mostrar os pokemons em sequência
   const [initial, setInitial] = useState(true);
   // Armazenados valores de pedido do utilizador
@@ -37,6 +35,10 @@ export const useProjectHelper = () => {
     if (n > 1280) setOffset(1280);
     else if (n < 0) setOffset(0);
     else setOffset(e.target.valueAsNumber);
+  }
+
+  const handleInitialChange = () => {
+    setInitial(false);
   }
 
   const fetchPokemons = async () => {
@@ -73,8 +75,10 @@ export const useProjectHelper = () => {
     fetchPokemons,
     handleLimitChange,
     handleOffsetChange,
+    handleInitialChange,
     limit,
     offset,
+    initial,
     goToPokeDetails: handleGoToPokeDetails,
   };
 };
