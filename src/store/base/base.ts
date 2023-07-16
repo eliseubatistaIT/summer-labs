@@ -7,7 +7,7 @@ export interface BaseState {
 }
 
 const initialState: BaseState = {
-  isLoading: false,
+  isLoading: true,
 };
 
 interface UseBaseStoreOutput extends BaseState {
