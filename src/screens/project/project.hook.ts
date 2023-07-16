@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Pokemon } from "./Pokemon";
 import { ScreenPaths } from "@constants";
-import { useCustomNavigation } from "@hooks";
+import { useCustomNavigation, useFetch } from "@hooks";
 
 export const useProjectHelper = () => {
+  const fetch = useFetch();
   // Início do programa - mostrar os pokemons em sequência
   const [initial, setInitial] = useState(true);
   // Armazenados valores de pedido do utilizador
@@ -39,21 +40,27 @@ export const useProjectHelper = () => {
 
   const handleInitialChange = () => {
     setInitial(false);
-  }
+  };
 
   const fetchPokemons = async () => {
-    let final_url =
-      "https://pokeapi.co/api/v2/pokemon?limit=" + limit + "&offset=" + offset;
-    const fetchResult = await fetch(final_url);
-    const fetchJSON = await fetchResult.json();
+    // let final_url =
+    //   "https://pokeapi.co/api/v2/pokemon?limit=" + limit + "&offset=" + offset;
+    // const fetchResult = await fetch(final_url);
+    // const fetchJSON = await fetchResult.json();
+    const pokeListResult = await fetch<any>(
+      "https://pokeapi.co/api/v2/pokemon",
+      {
+        limit: limit,
+        offset: offset,
+      }
+    );
     let pokemonsData: Pokemon[] = [];
     //console.log(fetchJSON);
-    for (let i = 0; i < fetchJSON.results.length; i++) {
+    for (let i = 0; i < pokeListResult.results.length; i++) {
       //console.log(fetchJSON.results[i]);
-      const pokeResult = await fetch(fetchJSON.results[i].url);
-      const pokeJSON = (await pokeResult.json()) as Pokemon;
+      const pokeResult = await fetch<Pokemon>(pokeListResult.results[i].url);
       //console.log(newPokemonsData);
-      pokemonsData.push(pokeJSON); // CUIDADO, só se recebem 20 pokemons de cada vez
+      pokemonsData.push(pokeResult); // CUIDADO, só se recebem 20 pokemons de cada vez
     }
     //console.log(newPokemonsData);
     setPokemons(pokemonsData);
