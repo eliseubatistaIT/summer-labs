@@ -1,5 +1,4 @@
 import { AppHeader, AppHeaderProps } from "@components";
-
 export interface AppScreenProps {
   header: AppHeaderProps;
   children?: React.ReactNode;
@@ -11,7 +10,9 @@ export const AppScreen = ({ header, children }: AppScreenProps) => {
       style={{
         width: "100%",
         flex: 1,
-        overflow: "auto",
+        margin: "auto",
+        background: "#ffffff",
+        position: "relative",
       }}
     >
       <AppHeader {...header} />
