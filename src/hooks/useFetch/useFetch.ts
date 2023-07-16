@@ -2,7 +2,7 @@ import React from "react";
 
 type runFetchOptions = Record<string, any>;
 
-export const useFetch = <InputType, OutputType>() => {
+export const useFetch = () => {
   const buildUrl = (baseUrl: string, options?: runFetchOptions) => {
     let optionsCount = 0;
     let finalUrl = `${baseUrl}?`;
@@ -24,7 +24,7 @@ export const useFetch = <InputType, OutputType>() => {
     return finalUrl;
   };
 
-  const runFetch = async (
+  const runFetch = async <OutputType>(
     endpointUrl: string,
     options?: runFetchOptions
   ): Promise<OutputType> => {
