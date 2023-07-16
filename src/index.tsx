@@ -17,21 +17,29 @@ root.render(
           padding: 0;
         }
 
-        html,
+        html {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          font-family: "Poppins", sans-serif;
+          overflow: hidden;
+        }
+
         body {
           width: 100%;
           height: 100%;
-          font-family: "Poppins", sans-serif;
+          display: flex;
+          background: #ededed;
+          flex-direction: column;
+          margin: auto;
+          overflow: initial;
+          overflow-x: hidden;
+          overflow-y: auto;
         }
 
         #root {
           width: 100%;
-          height: 100%;
-          background: #f7e5d2;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
+          min-height: 100%;
         }
 
         div {
@@ -43,6 +51,13 @@ root.render(
         p {
           color: inherit;
           font-size: 16px;
+        }
+
+        @media only screen and (min-width: 769px) {
+          body {
+            max-height: 90%;
+            max-width: 480px;
+          }
         }
       `}
     />
