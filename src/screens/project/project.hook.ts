@@ -43,10 +43,6 @@ export const useProjectHelper = () => {
   };
 
   const fetchPokemons = async () => {
-    // let final_url =
-    //   "https://pokeapi.co/api/v2/pokemon?limit=" + limit + "&offset=" + offset;
-    // const fetchResult = await fetch(final_url);
-    // const fetchJSON = await fetchResult.json();
     const pokeListResult = await fetch<any>(
       "https://pokeapi.co/api/v2/pokemon",
       {
