@@ -30,5 +30,5 @@ export const useBaseStore = StoreHelper.createStore<UseBaseStoreOutput>(
     },
   }),
   "Base",
-  createJSONStorage(() => localStorage)
+  createJSONStorage(() => sessionStorage)
 );
