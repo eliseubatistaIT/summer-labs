@@ -9,13 +9,12 @@ import {
 } from "@screens";
 import { ScreenPaths } from "@constants";
 import React from "react";
-import { useBaseStore, useHistoryStore } from "@store";
+import { useHistoryStore } from "@store";
 import { useCustomNavigation } from "@hooks";
 import { GlobalLoader } from "@components";
 
 export const App = () => {
   const { goTo } = useCustomNavigation();
-  const { isLoading } = useBaseStore();
   const { history } = useHistoryStore();
 
   React.useEffect(() => {
@@ -37,7 +36,6 @@ export const App = () => {
         // overflow: "hidden",
       }}
     >
-      {isLoading && <GlobalLoader />}
       <Routes>
         <Route path={ScreenPaths.home} element={<HomeScreen />} />
         <Route path={ScreenPaths.challenge1} element={<Challenge1 />} />
