@@ -70,7 +70,7 @@ export const useProjectHelper = () => {
 
       // a técnica utilizada acima já faz grande parte do trabalho
       // MAS, é preciso fazer algumas correções
-      //setIsLoading(false);
+      setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
     }
