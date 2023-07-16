@@ -3,29 +3,29 @@ import { createJSONStorage } from "zustand/middleware";
 import { StoreHelper } from "../store.helper";
 
 export interface BaseState {
-  favorites: number[];
+  isLoading: boolean;
 }
 
 const initialState: BaseState = {
-  favorites: [],
+  isLoading: false,
 };
 
 interface UseBaseStoreOutput extends BaseState {
-  addFavorite: (id: number) => void;
+  setIsLoading: (value: boolean) => void;
   //TODO: Create remove favorite
 }
 
 export const useBaseStore = StoreHelper.createStore<UseBaseStoreOutput>(
   (set) => ({
     ...initialState,
-    addFavorite: function (id: number) {
+    setIsLoading: function (value: boolean) {
       set(
         produce((state: BaseState) => ({
           ...state,
-          favorites: [...state.favorites, id],
+          isLoading: value,
         })),
         false,
-        "addFavorite"
+        "setIsLoading"
       );
     },
   }),
