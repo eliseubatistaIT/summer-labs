@@ -1,3 +1,4 @@
+import { APP_MAX_WIDTH } from "@constants";
 import { css, Global } from "@emotion/react";
 
 export const GlobalLoader = () => {
@@ -62,7 +63,9 @@ export const GlobalLoader = () => {
       <div
         style={{
           width: "100%",
+          maxWidth: `${APP_MAX_WIDTH}px`,
           height: "100vh",
+          maxHeight: "90%",
           background: "#00000068",
           position: "fixed",
           zIndex: 1000,

@@ -1,3 +1,4 @@
+import { MOBILE_BREAKPOINT, TABLET_BREAKPOINT } from "@constants";
 import React from "react";
 
 export type Device = "mobile" | "tablet" | "desktop";
@@ -7,9 +8,9 @@ export const useResponsive = () => {
 
   React.useEffect(() => {
     const handleWindowResize = () => {
-      if (window.innerWidth <= 480) {
+      if (window.innerWidth <= MOBILE_BREAKPOINT) {
         setDevice("mobile");
-      } else if (window.innerWidth <= 768) {
+      } else if (window.innerWidth <= TABLET_BREAKPOINT) {
         setDevice("tablet");
       } else {
         setDevice("desktop");
