@@ -4,7 +4,6 @@ import {
   Challenge2,
   Challenge2_5,
   HomeScreen,
-  PokeDetails,
   Project,
 } from "@screens";
 import { ScreenPaths } from "@constants";
@@ -32,18 +31,8 @@ export const App = () => {
       style={{
         width: "100%",
         height: "100%",
-        maxWidth: "390px",
-        maxHeight: "844px",
-        border: "10px solid #000000",
-        borderBottom: "55px solid #000000",
-        borderTop: "35px solid #000000",
-        borderRadius: "15px",
-        background: "#ffffff",
         position: "relative",
-        overflow: "hidden",
-        textAlign: "center",
-        marginLeft: "auto",
-        marginRight: "auto",
+        // overflow: "hidden",
       }}
     >
       <Routes>
@@ -51,9 +40,7 @@ export const App = () => {
         <Route path={ScreenPaths.challenge1} element={<Challenge1 />} />
         <Route path={ScreenPaths.challenge2} element={<Challenge2 />} />
         <Route path={ScreenPaths.challenge2_5} element={<Challenge2_5 />} />
-        <Route path={ScreenPaths.project.pokeapi} element={<Project />} />
-        <Route path={ScreenPaths.project.pokedetails} element={<PokeDetails />}
-        />
+        <Route path={ScreenPaths.project} element={<Project />} />
       </Routes>
     </div>
   );
