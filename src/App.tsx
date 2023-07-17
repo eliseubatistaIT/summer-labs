@@ -8,14 +8,20 @@ import {
   Project,
 } from "@screens";
 import { ScreenPaths } from "@constants";
-import React from "react";
+import React, { useState } from "react";
 import { useHistoryStore } from "@store";
 import { useCustomNavigation } from "@hooks";
 import { GlobalLoader } from "@components";
+import { Pokemon } from "./screens/project/Pokemon";
 
 export const App = () => {
   const { goTo } = useCustomNavigation();
   const { history } = useHistoryStore();
+  const [pokemon, setPokemon] = useState<Pokemon | undefined>(undefined);
+
+  function handlePokemonChange(e: any) {
+    setPokemon(e.target);
+  }
 
   React.useEffect(() => {
     console.log("App started");
@@ -44,7 +50,7 @@ export const App = () => {
         <Route path={ScreenPaths.project.pokeapi} element={<Project />} />
         <Route
           path={ScreenPaths.project.pokedetails}
-          element={<PokeDetails />}
+          element={<PokeDetails props={pokemon}/>}
         />
       </Routes>
     </div>

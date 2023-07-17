@@ -13,7 +13,7 @@ interface PokemonListResult {
   results: PokemonListResultItem[];
 }
 
-export const Project = () => {
+export const Project = ({}) => {
   const {
     pokemons,
     fetchPokemons,

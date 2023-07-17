@@ -29,61 +29,66 @@ function giveTypeColours(type: string | undefined) {
   return r;
 }
 
-export const PokemonCard = (props: PokemonCardProps) => {
-  let colour = giveTypeColours(props.pokemon?.types[0].type.name);
-  let colour2 = "";
-  if (props.pokemon?.types[1])
-    colour2 = giveTypeColours(props.pokemon?.types[1].type.name);
-  else colour2 = colour;
+export const PokemonCard = (props: any) => { // props: PokemonCardProps
+  if (props == undefined) {
+    return <></>;
+  }
+  else{
+    let colour = giveTypeColours(props.pokemon?.types[0].type.name);
+    let colour2 = "";
+    if (props.pokemon?.types[1])
+      colour2 = giveTypeColours(props.pokemon?.types[1].type.name);
+    else colour2 = colour;
 
-  return (
-    <>
-      <p>----------------------------------</p>
-      <div
-        onClick={() => {
-          console.log("Clicked");
-        }}
-        style={{
-          width: "100%",
-          height: "100%",
-          maxWidth: "320px",
-          maxHeight: "auto",
-          border: "12px solid #49494d",
-          borderBottom: "15px solid #49494d",
-          borderTop: "15px solid #49494d",
-          borderRadius: "15px",
-          background: "linear-gradient(" + colour + ", " + colour2 + ")",
-          position: "relative",
-          overflow: "hidden",
-          textAlign: "center",
-          marginLeft: "auto",
-          marginRight: "auto",
-          textShadow: "0.75px 0.75px 1.5px #818385",
-        }} // outline: "2px dashed blue",
-      >
-        <p>--------------------</p>
-        <label>
-          <b>Pokemon Name</b>: {props.pokemon.name}; <b>#</b>
-          {props.pokemon.id}
-        </label>
-        <p>--------------------</p>
-        {!props.pokemon?.types[1]?.type.name && (
-          <p>
-            <b>Type</b>: {props.pokemon?.types[0]?.type.name}
-          </p>
-        )}
-        {props.pokemon?.types[1]?.type.name && (
-          <p>
-            <b>Types</b>: {props.pokemon?.types[0]?.type.name},{" "}
-            {props.pokemon?.types[1]?.type.name}
-          </p>
-        )}
-        <DrawStats stats={props.pokemon?.stats} />
-        <DrawAllSprites sprites={props.pokemon.sprites} />
-      </div>
-      <p>----------------------------------</p>
-    </>
-  );
+    return (
+      <>
+        <p>----------------------------------</p>
+        <div
+          onClick={() => {
+            console.log("Clicked");
+          }}
+          style={{
+            width: "100%",
+            height: "100%",
+            maxWidth: "320px",
+            maxHeight: "auto",
+            border: "12px solid #49494d",
+            borderBottom: "15px solid #49494d",
+            borderTop: "15px solid #49494d",
+            borderRadius: "15px",
+            background: "linear-gradient(" + colour + ", " + colour2 + ")",
+            position: "relative",
+            overflow: "hidden",
+            textAlign: "center",
+            marginLeft: "auto",
+            marginRight: "auto",
+            textShadow: "0.75px 0.75px 1.5px #818385",
+          }} // outline: "2px dashed blue",
+        >
+          <p>--------------------</p>
+          <label>
+            <b>Pokemon Name</b>: {props.pokemon.name}; <b>#</b>
+            {props.pokemon.id}
+          </label>
+          <p>--------------------</p>
+          {!props.pokemon?.types[1]?.type.name && (
+            <p>
+              <b>Type</b>: {props.pokemon?.types[0]?.type.name}
+            </p>
+          )}
+          {props.pokemon?.types[1]?.type.name && (
+            <p>
+              <b>Types</b>: {props.pokemon?.types[0]?.type.name},{" "}
+              {props.pokemon?.types[1]?.type.name}
+            </p>
+          )}
+          <DrawStats stats={props.pokemon?.stats} />
+          <DrawAllSprites sprites={props.pokemon.sprites} />
+        </div>
+        <p>----------------------------------</p>
+      </>
+    );
+  }
 };
 
 function DrawAllSprites({ sprites }: { sprites: Sprites }) {

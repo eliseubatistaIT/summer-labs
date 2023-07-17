@@ -1,8 +1,10 @@
 import { AppScreen } from "@components";
 import { useProjectHelper } from "../project/project.hook";
+import { PokemonCard } from "../project/PokemonCard";
+import { Pokemon } from "../project/Pokemon";
 
 
-export const PokeDetails = () => {
+export const PokeDetails = ({pokemon} : any) => { // {pokemon}: PokemonCardProps
 
   return (
     <>
@@ -12,6 +14,7 @@ export const PokeDetails = () => {
           alt="PokeAPI"
           width="60%"
         />
+        {pokemon != undefined && <PokemonCard props={pokemon}/>}
       </AppScreen>
     </>
   );
