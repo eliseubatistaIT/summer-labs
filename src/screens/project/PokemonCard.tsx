@@ -3,7 +3,7 @@ import { Pokemon, Stat, Sprites } from "./Pokemon";
 import { useCustomNavigation } from "@hooks";
 import { PokeDetails } from "./../pokedetails/pokedetails";
 import { ScreenPaths } from "./../../constants/screenPaths/screenPaths";
-import { CustomButton } from "@components";
+import { CustomButton, CustomImage } from "@components";
 
 interface PokemonCardProps {
   pokemon: Pokemon;
@@ -48,24 +48,40 @@ export const PokemonCardSimple = (props: PokemonCardProps) => {
       <div
         style={{
           width: "100%",
-          height: "100%",
+          height: "fit-content",
           maxWidth: "320px",
           maxHeight: "auto",
-          border: "12px solid #49494d",
-          borderBottom: "15px solid #49494d",
-          borderTop: "15px solid #49494d",
+          minHeight: "110px",
+          minWidth: "320px",
+          //border: "12px solid #49494d",
+          //borderBottom: "15px solid #49494d",
+          //borderTop: "15px solid #49494d",
           borderRadius: "15px",
           background: "linear-gradient(" + colour + ", " + colour2 + ")",
           position: "relative",
-          overflow: "hidden",
+          //overflow: "hidden",
           textAlign: "center",
           marginLeft: "auto",
           marginRight: "auto",
           textShadow: "0.75px 0.75px 1.5px #818385",
         }} // outline: "2px dashed blue",
       >
-        <img src={props.pokemon?.sprites.front_default} alt="Front-Default" />
-        <p>--------------------</p>
+        <CustomImage
+          src={props.pokemon?.sprites.front_default}
+          containerStyles={{
+            width: "100px",
+            height: "80px",
+            position: "absolute",
+            top: "-30px",
+            right: "0px",
+            minHeight: "fit-content",
+          }}
+          imageStyles={{ width: "115%", height: "auto" }}
+        />
+        <div style={{ flex: "1" }}>
+          <p style={{ color: "white" }}>{`#${props.pokemon?.id}`}</p>
+        </div>
+        {/* <p>--------------------</p>
         <label>
           <b>Pokemon Name</b>: {props.pokemon.name}; <b>#</b>
           {props.pokemon.id}
@@ -97,7 +113,7 @@ export const PokemonCardSimple = (props: PokemonCardProps) => {
             setFavorites(props.pokemon);
           }}
           styles={{ margin: "0 auto 10px auto" }}
-        />
+        /> */}
       </div>
       <p>----------------------------------</p>
     </>
