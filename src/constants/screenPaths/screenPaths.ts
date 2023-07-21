@@ -3,5 +3,5 @@ export const ScreenPaths = {
   challenge1: "/challenge1",
   challenge2: "/challenge2",
   challenge2_5: "/challenge2_5",
-  project: { pokeapi: "/pokeapi", pokedetails: "/pokeapi/pokedetails" },
+  project: { pokeapi: "/pokeapi", pokedetails: "/pokeapi/pokedetails", favorites: "/pokeapi/favorites" },
 };

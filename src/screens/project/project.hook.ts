@@ -25,6 +25,10 @@ export const useProjectHelper = () => {
     goTo(ScreenPaths.project.pokedetails);
   };
 
+  const hadleGoToFavorites = () => {
+    goTo(ScreenPaths.project.favorites);
+  };
+
   function handleLimitChange(e: any) {
     let n = e.target.valueAsNumber;
     if (n > 20) setLimit(20);
@@ -88,5 +92,6 @@ export const useProjectHelper = () => {
     offset,
     initial,
     goToPokeDetails: handleGoToPokeDetails,
+    goToFavorites: hadleGoToFavorites,
   };
 };

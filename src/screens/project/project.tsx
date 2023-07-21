@@ -1,8 +1,6 @@
 import { AppScreen, CustomButton } from "@components";
 import { useProjectHelper } from "./project.hook";
 import { DrawAllPokemons } from "./Pokemon";
-import { ScreenPaths } from "@constants";
-import { PokeDetails } from "../pokedetails";
 
 interface PokemonListResultItem {
   name: string;
@@ -24,6 +22,7 @@ export const Project = ({}) => {
     offset,
     initial,
     goToPokeDetails,
+    goToFavorites,
   } = useProjectHelper();
 
   // console.log(pokemons[1]?.stats);
@@ -35,6 +34,7 @@ export const Project = ({}) => {
         alt="PokeAPI"
         width="55%"
       />
+      <CustomButton text="Show Favorites" onClick={goToFavorites} />
       <div
         style={{
           width: "100%",
