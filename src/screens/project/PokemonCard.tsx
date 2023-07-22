@@ -81,10 +81,10 @@ export const PokemonCardSimple = (props: PokemonCardProps) => {
         <div style={{ flex: "1" }}>
           <p style={{ color: "white" }}>{`#${props.pokemon?.id}`}</p>
         </div>
-        {/* <p>--------------------</p>
+        <p>--------------------</p>
         <label>
           <b>Pokemon Name</b>: {props.pokemon.name}; <b>#</b>
-          {props.pokemon.id}
+          {/* {props.pokemon.id} */}
         </label>
         <p>--------------------</p>
         {!props.pokemon?.types[1]?.type.name && (
@@ -113,7 +113,7 @@ export const PokemonCardSimple = (props: PokemonCardProps) => {
             setFavorites(props.pokemon);
           }}
           styles={{ margin: "0 auto 10px auto" }}
-        /> */}
+        />
       </div>
       <p>----------------------------------</p>
     </>
