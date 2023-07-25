@@ -66,67 +66,70 @@ export const PokemonCardSimple = (props: PokemonCardProps) => {
           textShadow: "0.75px 0.75px 1.5px #818385",
         }} // outline: "2px dashed blue",
       >
-        <CustomImage
-          src={props.pokemon?.sprites.front_default}
-          containerStyles={{
-            width: "100px",
-            height: "80px",
-            position: "absolute",
-            top: "-30px",
-            right: "0px",
-            minHeight: "fit-content",
-          }}
-          imageStyles={{ width: "115%", height: "auto" }}
-        />
+        <div style={{ width: "100%", height: "100%", zIndex: "2" }}>
+          <CustomImage
+            src={props.pokemon?.sprites.front_default}
+            containerStyles={{
+              width: "100px",
+              height: "80px",
+              position: "absolute",
+              top: "-30px",
+              right: "0px",
+              minHeight: "fit-content",
+            }}
+            imageStyles={{ width: "115%", height: "auto" }}
+          />
+          <div style={{ flex: "1" }}>
+            <p style={{ color: "white" }}>{`#${props.pokemon?.id}`}</p>
+          </div>
+          <p>--------------------</p>
+          <label>
+            <b>Pokemon Name</b>: {props.pokemon.name}; <b>#</b>
+            {/* {props.pokemon.id} */}
+          </label>
+          <p>--------------------</p>
+          {!props.pokemon?.types[1]?.type.name && (
+            <p>
+              <b>Type</b>: {props.pokemon?.types[0]?.type.name}
+            </p>
+          )}
+          {props.pokemon?.types[1]?.type.name && (
+            <p>
+              <b>Types</b>: {props.pokemon?.types[0]?.type.name},{" "}
+              {props.pokemon?.types[1]?.type.name}
+            </p>
+          )}
+          <p>--------------------</p>
+          <CustomButton
+            text="See more details about it"
+            onClick={() => {
+              setPokemon(props.pokemon);
+              goTo(ScreenPaths.project.pokedetails);
+            }}
+          />
+          <p>--------------------</p>
+          <CustomButton
+            text="Set / Remove from Favorites"
+            onClick={() => {
+              setFavorites(props.pokemon);
+            }}
+            styles={{ margin: "0 auto 10px auto" }}
+          />
+        </div>
+
         <CustomImage
           src="https://www.pngall.com/wp-content/uploads/4/Pokeball-PNG-Free-Download.png"
           containerStyles={{
             width: "250px",
             height: "120px",
             position: "absolute",
-            top: "20px",
+            top: "0px",
             right: "10px",
             minHeight: "fit-content",
             opacity: "35%",
             //before
           }}
           imageStyles={{ width: "115%", height: "auto" }}
-        />
-        <div style={{ flex: "1" }}>
-          <p style={{ color: "white" }}>{`#${props.pokemon?.id}`}</p>
-        </div>
-        <p>--------------------</p>
-        <label>
-          <b>Pokemon Name</b>: {props.pokemon.name}; <b>#</b>
-          {/* {props.pokemon.id} */}
-        </label>
-        <p>--------------------</p>
-        {!props.pokemon?.types[1]?.type.name && (
-          <p>
-            <b>Type</b>: {props.pokemon?.types[0]?.type.name}
-          </p>
-        )}
-        {props.pokemon?.types[1]?.type.name && (
-          <p>
-            <b>Types</b>: {props.pokemon?.types[0]?.type.name},{" "}
-            {props.pokemon?.types[1]?.type.name}
-          </p>
-        )}
-        <p>--------------------</p>
-        <CustomButton
-          text="See more details about it"
-          onClick={() => {
-            setPokemon(props.pokemon);
-            goTo(ScreenPaths.project.pokedetails);
-          }}
-        />
-        <p>--------------------</p>
-        <CustomButton
-          text="Set / Remove from Favorites"
-          onClick={() => {
-            setFavorites(props.pokemon);
-          }}
-          styles={{ margin: "0 auto 10px auto" }}
         />
       </div>
       <p>----------------------------------</p>
@@ -171,48 +174,50 @@ export const PokemonCard = (props: any) => {
             textShadow: "0.75px 0.75px 1.5px #818385",
           }} // outline: "2px dashed blue",
         >
+          <div style={{ width: "100%", height: "100%", zIndex: "2" }}>
+            <p>--------------------</p>
+            <label>
+              <b>Pokemon Name</b>: {props.pokemon.name}; <b>#</b>
+              {props.pokemon.id}
+            </label>
+            <p>--------------------</p>
+            {!props.pokemon?.types[1]?.type.name && (
+              <p>
+                <b>Type</b>: {props.pokemon?.types[0]?.type.name}
+              </p>
+            )}
+            {props.pokemon?.types[1]?.type.name && (
+              <p>
+                <b>Types</b>: {props.pokemon?.types[0]?.type.name},{" "}
+                {props.pokemon?.types[1]?.type.name}
+              </p>
+            )}
+            <p>--------------------</p>
+            <DrawStats stats={props.pokemon?.stats} />
+            <p>--------------------</p>
+            <CustomButton
+              text="Set / Remove from Favorites"
+              onClick={() => {
+                setFavorites(props.pokemon);
+              }}
+              styles={{ margin: "0 auto 10px auto" }}
+            />
+            <DrawAllSprites sprites={props.pokemon.sprites} />
+          </div>
           <CustomImage
-          src="https://www.pngall.com/wp-content/uploads/4/Pokeball-PNG-Free-Download.png"
-          containerStyles={{
-            width: "250px",
-            height: "120px",
-            position: "absolute",
-            top: "20px",
-            right: "10px",
-            minHeight: "fit-content",
-            opacity: "35%",
-            //before
-          }}
-          imageStyles={{ width: "115%", height: "auto" }}
-        />
-          <p>--------------------</p>
-          <label>
-            <b>Pokemon Name</b>: {props.pokemon.name}; <b>#</b>
-            {props.pokemon.id}
-          </label>
-          <p>--------------------</p>
-          {!props.pokemon?.types[1]?.type.name && (
-            <p>
-              <b>Type</b>: {props.pokemon?.types[0]?.type.name}
-            </p>
-          )}
-          {props.pokemon?.types[1]?.type.name && (
-            <p>
-              <b>Types</b>: {props.pokemon?.types[0]?.type.name},{" "}
-              {props.pokemon?.types[1]?.type.name}
-            </p>
-          )}
-          <p>--------------------</p>
-          <DrawStats stats={props.pokemon?.stats} />
-          <p>--------------------</p>
-          <CustomButton
-            text="Set / Remove from Favorites"
-            onClick={() => {
-              setFavorites(props.pokemon);
+            src="https://www.pngall.com/wp-content/uploads/4/Pokeball-PNG-Free-Download.png"
+            containerStyles={{
+              width: "300px",
+              height: "180px",
+              position: "absolute",
+              top: "10px",
+              right: "10px",
+              minHeight: "fit-content",
+              opacity: "35%",
+              //before
             }}
-            styles={{ margin: "0 auto 10px auto" }}
+            imageStyles={{ width: "115%", height: "auto" }}
           />
-          <DrawAllSprites sprites={props.pokemon.sprites} />
         </div>
         <p>----------------------------------</p>
       </>
