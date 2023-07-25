@@ -1,8 +1,8 @@
 import React, { ChangeEvent, useState } from "react";
-import { Pokemon } from "./Pokemon";
 import { ScreenPaths } from "@constants";
 import { useCustomNavigation, useFetch } from "@hooks";
 import { useBaseStore } from "@store";
+import { Pokemon } from "@types";
 
 export const useProjectHelper = () => {
   const { setIsLoading } = useBaseStore();
@@ -56,7 +56,9 @@ export const useProjectHelper = () => {
   };
 
   const filterPokemonSearch = () => {
-    const result = pokemons.filter((pokemon: Pokemon) => {return pokemon.name.includes(searchPokemonWhatever)});
+    const result = pokemons.filter((pokemon: Pokemon) => {
+      return pokemon.name.includes(searchPokemonWhatever);
+    });
     return result;
   };
 

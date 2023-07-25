@@ -8,11 +8,9 @@ import {
   Project,
 } from "@screens";
 import { ScreenPaths } from "@constants";
-import React, { useState } from "react";
+import React from "react";
 import { useHistoryStore } from "@store";
 import { useCustomNavigation } from "@hooks";
-import { GlobalLoader } from "@components";
-import { Pokemon } from "./screens/project/Pokemon";
 import { FavoritesScreen } from "./screens/favorites";
 
 export const App = () => {

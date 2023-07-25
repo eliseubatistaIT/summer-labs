@@ -6,8 +6,6 @@ import { useBaseStore } from "@store";
 // }
 
 export const PokeDetails = () => {
-  // {pokemon}: PokemonCardProps
-
   const { pokemon } = useBaseStore();
 
   return (

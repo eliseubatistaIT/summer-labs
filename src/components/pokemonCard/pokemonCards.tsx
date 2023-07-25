@@ -2,7 +2,7 @@ import { CustomButton, CustomImage } from "@components";
 import { ScreenPaths } from "@constants";
 import { useCustomNavigation } from "@hooks";
 import { useBaseStore } from "@store";
-import { Pokemon, Stat } from "src/screens/project/Pokemon";
+import { Pokemon, Stat } from "@types";
 
 interface PokemonCardProps {
   pokemon: Pokemon;

@@ -1,7 +1,7 @@
+import { Pokemon } from "@types";
 import produce from "immer";
 import { createJSONStorage } from "zustand/middleware";
 import { StoreHelper } from "../store.helper";
-import { Pokemon } from "src/screens/project/Pokemon";
 
 export interface BaseState {
   isLoading: boolean;
@@ -46,7 +46,8 @@ export const useBaseStore = StoreHelper.createStore<UseBaseStoreOutput>(
             // Pokemon already exists in the favorites list, remove it
             alert(value.name + " was REMOVED from Favorites!");
             newFavorites = state.favorites.filter(
-              (pokemon) => pokemon.id !== value.id);
+              (pokemon) => pokemon.id !== value.id
+            );
           } else {
             alert(value.name + " was ADDED to Favorites!");
             // Pokemon doesn't exist in the favorites list, add it
@@ -55,7 +56,7 @@ export const useBaseStore = StoreHelper.createStore<UseBaseStoreOutput>(
           }
           return {
             ...state,
-            favorites: newFavorites
+            favorites: newFavorites,
           };
 
           console.log(state.favorites);
