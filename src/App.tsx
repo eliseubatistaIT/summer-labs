@@ -11,7 +11,7 @@ import { ScreenPaths } from "@constants";
 import React from "react";
 import { useHistoryStore } from "@store";
 import { useCustomNavigation } from "@hooks";
-import { FavoritesScreen } from "./screens/favorites";
+import { FavoritesScreen } from "@screens";
 
 export const App = () => {
   const { goTo } = useCustomNavigation();
