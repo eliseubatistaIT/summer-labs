@@ -3,6 +3,7 @@ import { ScreenPaths } from "@constants";
 import { useCustomNavigation } from "@hooks";
 import { useBaseStore } from "@store";
 import { Pokemon, Stat } from "@types";
+import React from "react";
 
 interface PokemonCardProps {
   pokemon: Pokemon;
@@ -56,6 +57,9 @@ const DrawStats = ({ stats }: { stats: Stat[] }) => {
 export const PokemonCard = (props: PokemonCardProps) => {
   const { setPokemon, setFavorites } = useBaseStore();
   const { goTo } = useCustomNavigation(); // ba
+
+  const [isHovered, setHovered] = React.useState<boolean>(false);
+
   let colour = giveTypeColours(props.pokemon?.types[0].type.name);
   let colour2 = "";
   if (props.pokemon?.types[1])
@@ -78,7 +82,14 @@ export const PokemonCard = (props: PokemonCardProps) => {
         marginLeft: "auto",
         marginRight: "auto",
         textShadow: "0.75px 0.75px 1.5px #818385",
+        zoom: isHovered ? 1.05 : 1,
       }} // outline: "2px dashed blue",
+      onClick={() => {
+        setPokemon(props.pokemon);
+        goTo(ScreenPaths.project.pokedetails);
+      }}
+      onPointerEnter={() => setHovered(true)}
+      onPointerLeave={() => setHovered(false)}
     >
       <div style={{ width: "100%", height: "100%", zIndex: "2" }}>
         <CustomImage
@@ -121,13 +132,13 @@ export const PokemonCard = (props: PokemonCardProps) => {
           </>
         )}
 
-        <CustomButton
+        {/* <CustomButton
           text="See more details about it"
           onClick={() => {
             setPokemon(props.pokemon);
             goTo(ScreenPaths.project.pokedetails);
           }}
-        />
+        /> */}
         <p>--------------------</p>
         <CustomButton
           text="Set / Remove from Favorites"

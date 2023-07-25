@@ -1,6 +1,5 @@
-import { AppScreen } from "@components";
+import { AppScreen, PokemonCard } from "@components";
 import { useBaseStore } from "@store";
-import { DrawAllPokemons } from "../project/Pokemon";
 
 export const FavoritesScreen = () => {
   const { favorites } = useBaseStore();
@@ -17,8 +16,17 @@ export const FavoritesScreen = () => {
         alt="Star"
         width="10%"
       />
-      {!favorites && <p>You have no favorites. Go your back to your last page and select your favorite pokemons!</p>}
-      {favorites && <DrawAllPokemons pokemons={favorites}/>}
+      {!favorites && (
+        <p>
+          You have no favorites. Go your back to your last page and select your
+          favorite pokemons!
+        </p>
+      )}
+      <div style={{ width: "100%", gap: "20px" }}>
+        {favorites.map((pokemon) => (
+          <PokemonCard key={pokemon.id} pokemon={pokemon} type="small" />
+        ))}
+      </div>
     </AppScreen>
   );
 };

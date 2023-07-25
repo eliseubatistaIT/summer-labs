@@ -1,6 +1,5 @@
-import { AppScreen, CustomButton } from "@components";
+import { AppScreen, CustomButton, PokemonCard } from "@components";
 import { useProjectHelper } from "./project.hook";
-import { DrawAllPokemons } from "./Pokemon";
 
 interface PokemonListResultItem {
   name: string;
@@ -63,7 +62,7 @@ export const Project = ({}) => {
         <h4>Use the search bar to find the pokemon(s) you want to see</h4>{" "}
         <h4>OR / AND</h4>{" "}
         <h4>Write in the 2 spaces below to search for the pokemons you want</h4>
-        <h4>{" "}</h4>
+        <h4> </h4>
         <h4></h4>
       </div>
       <p>---------------------------------</p>
@@ -125,7 +124,11 @@ export const Project = ({}) => {
             }}
             styles={{ margin: "0 auto 10px auto" }}
           /> */}
-          <DrawAllPokemons pokemons={pokemons} />
+          <div style={{ width: "100%", gap: "20px" }}>
+            {pokemons.map((pokemon) => (
+              <PokemonCard key={pokemon.id} pokemon={pokemon} type="small" />
+            ))}
+          </div>
         </>
       )}
     </AppScreen>

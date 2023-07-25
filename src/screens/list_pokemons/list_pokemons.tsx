@@ -1,5 +1,4 @@
-import { AppScreen, CustomButton } from "@components";
-import { DrawAllPokemons } from "../project/Pokemon";
+import { AppScreen, CustomButton, PokemonCard } from "@components";
 import { useProjectHelper } from "../project/project.hook";
 
 export const ShowList = () => {
@@ -108,7 +107,11 @@ export const ShowList = () => {
             }}
             styles={{ margin: "0 auto 10px auto" }}
           /> */}
-            <DrawAllPokemons pokemons={pokemons} />
+            <div style={{ width: "100%", gap: "20px" }}>
+              {pokemons.map((pokemon) => (
+                <PokemonCard key={pokemon.id} pokemon={pokemon} type="small" />
+              ))}
+            </div>
           </>
         )}
       </AppScreen>
