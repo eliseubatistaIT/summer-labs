@@ -1,4 +1,4 @@
-import { PokemonCard, PokemonCardSimple } from "./PokemonCard";
+import { PokemonCard } from "@components";
 
 interface Ability {
   name: string;
@@ -8,6 +8,9 @@ interface Ability {
 export interface Stat {
   base_stat: number;
   effort: number;
+  stat: {
+    name: string;
+  };
 }
 
 export interface Sprites {
@@ -49,7 +52,7 @@ export const DrawAllPokemons = ({ pokemons }: { pokemons: Pokemon[] }) => {
   return (
     <>
       {pokemons.map((pokemon) => (
-        <PokemonCardSimple key={pokemon.id} pokemon={pokemon} />
+        <PokemonCard key={pokemon.id} pokemon={pokemon} type="small" />
       ))}
     </>
   );

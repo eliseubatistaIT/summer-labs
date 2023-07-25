@@ -1,14 +1,14 @@
-import { AppScreen } from "@components";
-import { PokemonCard } from "../project/PokemonCard";
+import { AppScreen, PokemonCard } from "@components";
 import { useBaseStore } from "@store";
 
 // interface PokeDetailsScreen {
 //   pokemon: Pokemon | undefined,
 // }
 
-export const PokeDetails = () => { // {pokemon}: PokemonCardProps
+export const PokeDetails = () => {
+  // {pokemon}: PokemonCardProps
 
-  const {pokemon} = useBaseStore();
+  const { pokemon } = useBaseStore();
 
   return (
     <>
@@ -18,7 +18,7 @@ export const PokeDetails = () => { // {pokemon}: PokemonCardProps
           alt="PokeAPI"
           width="60%"
         />
-        {pokemon != undefined && <PokemonCard pokemon={pokemon}/>}
+        {pokemon != undefined && <PokemonCard pokemon={pokemon} type="full" />}
       </AppScreen>
     </>
   );
