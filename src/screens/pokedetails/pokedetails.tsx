@@ -1,7 +1,5 @@
 import { AppScreen } from "@components";
-import { useProjectHelper } from "../project/project.hook";
 import { PokemonCard } from "../project/PokemonCard";
-import { Pokemon } from "../project/Pokemon";
 import { useBaseStore } from "@store";
 
 // interface PokeDetailsScreen {

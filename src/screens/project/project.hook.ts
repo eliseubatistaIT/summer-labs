@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { Pokemon } from "./Pokemon";
 import { ScreenPaths } from "@constants";
 import { useCustomNavigation, useFetch } from "@hooks";
@@ -16,6 +16,9 @@ export const useProjectHelper = () => {
 
   // transformar pokemonsData em State
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
+
+  //
+  const [searchPokemonWhatever, setPokemonWhatever] = useState("");
 
   /* CUIDADOS a ter
        - só 
@@ -45,6 +48,16 @@ export const useProjectHelper = () => {
 
   const handleInitialChange = () => {
     setInitial(false);
+  };
+
+  const handleSearchPokemonInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setPokemonWhatever(e.currentTarget.value);
+    console.log("Finalmente mudaste", e.currentTarget.value);
+  };
+
+  const filterPokemonSearch = () => {
+    const result = pokemons.filter((pokemon: Pokemon) => {return pokemon.name.includes(searchPokemonWhatever)});
+    return result;
   };
 
   const fetchPokemons = async () => {
@@ -83,11 +96,13 @@ export const useProjectHelper = () => {
   }, []);
 
   return {
-    pokemons,
+    pokemons: filterPokemonSearch(),
     fetchPokemons,
     handleLimitChange,
     handleOffsetChange,
     handleInitialChange,
+    searchPokemonWhatever,
+    handleSearchPokemonInputChange,
     limit,
     offset,
     initial,

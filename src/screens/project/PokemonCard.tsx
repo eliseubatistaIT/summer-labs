@@ -78,6 +78,20 @@ export const PokemonCardSimple = (props: PokemonCardProps) => {
           }}
           imageStyles={{ width: "115%", height: "auto" }}
         />
+        <CustomImage
+          src="https://www.pngall.com/wp-content/uploads/4/Pokeball-PNG-Free-Download.png"
+          containerStyles={{
+            width: "250px",
+            height: "120px",
+            position: "absolute",
+            top: "20px",
+            right: "10px",
+            minHeight: "fit-content",
+            opacity: "35%",
+            //before
+          }}
+          imageStyles={{ width: "115%", height: "auto" }}
+        />
         <div style={{ flex: "1" }}>
           <p style={{ color: "white" }}>{`#${props.pokemon?.id}`}</p>
         </div>
@@ -157,6 +171,20 @@ export const PokemonCard = (props: any) => {
             textShadow: "0.75px 0.75px 1.5px #818385",
           }} // outline: "2px dashed blue",
         >
+          <CustomImage
+          src="https://www.pngall.com/wp-content/uploads/4/Pokeball-PNG-Free-Download.png"
+          containerStyles={{
+            width: "250px",
+            height: "120px",
+            position: "absolute",
+            top: "20px",
+            right: "10px",
+            minHeight: "fit-content",
+            opacity: "35%",
+            //before
+          }}
+          imageStyles={{ width: "115%", height: "auto" }}
+        />
           <p>--------------------</p>
           <label>
             <b>Pokemon Name</b>: {props.pokemon.name}; <b>#</b>

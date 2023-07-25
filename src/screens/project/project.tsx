@@ -18,6 +18,8 @@ export const Project = ({}) => {
     handleLimitChange,
     handleOffsetChange,
     handleInitialChange,
+    searchPokemonWhatever,
+    handleSearchPokemonInputChange,
     limit,
     offset,
     initial,
@@ -34,7 +36,11 @@ export const Project = ({}) => {
         alt="PokeAPI"
         width="55%"
       />
+      <p>---------------------------------</p>
+      <h5>Welcome to the Pokedex!</h5>
+      <p>---------------------------------</p>
       <CustomButton text="Show Favorites" onClick={goToFavorites} />
+      <p>---------------------------------</p>
       <div
         style={{
           width: "100%",
@@ -54,8 +60,21 @@ export const Project = ({}) => {
         }}
       >
         {/* <h3><b>Only 20 pokemons are shown at the same time</b></h3> */}
+        <h4>Use the search bar to find the pokemon(s) you want to see</h4>{" "}
+        <h4>OR / AND</h4>{" "}
         <h4>Write in the 2 spaces below to search for the pokemons you want</h4>
+        <h4>{" "}</h4>
+        <h4></h4>
       </div>
+      <p>---------------------------------</p>
+      <input
+        type="text"
+        name="pokemonSearch"
+        placeholder="Write the pokemon's name"
+        onChange={handleSearchPokemonInputChange}
+        value={searchPokemonWhatever}
+      />
+
       <p>---------------------------------</p>
       <div>
         <label>
@@ -99,13 +118,13 @@ export const Project = ({}) => {
           <p>---------------------------------</p>
           <h4>Scroll through the page to see all the pokémons</h4>
           <p>---------------------------------</p>
-          <CustomButton
+          {/* <CustomButton
             text="Next page (só para testes)"
             onClick={() => {
               goToPokeDetails();
             }}
             styles={{ margin: "0 auto 10px auto" }}
-          />
+          /> */}
           <DrawAllPokemons pokemons={pokemons} />
         </>
       )}
