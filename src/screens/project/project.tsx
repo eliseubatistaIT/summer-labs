@@ -12,18 +12,9 @@ interface PokemonListResult {
 
 export const Project = ({}) => {
   const {
-    pokemons,
-    fetchPokemons,
-    handleLimitChange,
-    handleOffsetChange,
-    handleInitialChange,
-    searchPokemonWhatever,
-    handleSearchPokemonInputChange,
-    limit,
-    offset,
-    initial,
-    goToPokeDetails,
     goToFavorites,
+    goToNamePokemon,
+    goToListPokemons
   } = useProjectHelper();
 
   // console.log(pokemons[1]?.stats);
@@ -40,7 +31,7 @@ export const Project = ({}) => {
       <p>---------------------------------</p>
       <CustomButton text="Show Favorites" onClick={goToFavorites} />
       <p>---------------------------------</p>
-      <div
+      {/* <div
         style={{
           width: "100%",
           height: "100%",
@@ -58,7 +49,7 @@ export const Project = ({}) => {
           marginRight: "auto",
         }}
       >
-        {/* <h3><b>Only 20 pokemons are shown at the same time</b></h3> */}
+        <h3><b>Only 20 pokemons are shown at the same time</b></h3>
         <h4>Use the search bar to find the pokemon(s) you want to see</h4>{" "}
         <h4>OR / AND</h4>{" "}
         <h4>Write in the 2 spaces below to search for the pokemons you want</h4>
@@ -72,31 +63,9 @@ export const Project = ({}) => {
         placeholder="Write the pokemon's name"
         onChange={handleSearchPokemonInputChange}
         value={searchPokemonWhatever}
-      />
+      /> */}
 
-      <p>---------------------------------</p>
-      <div>
-        <label>
-          <p>
-            (Number of pokemons you want to get; <i>MAXIMUM = 20</i>)
-          </p>
-          <p>
-            <b>Limit</b>:{" "}
-            <input type="number" value={limit} onChange={handleLimitChange} />
-          </p>
-          <br></br>
-        </label>
-        <label>
-          <p>
-            (From which index you want to search for; <i>MAXIMUM = 1280</i>)
-          </p>
-          <p>
-            <b>Offset</b>:{" "}
-            <input type="number" value={offset} onChange={handleOffsetChange} />
-          </p>
-          <br></br>
-        </label>
-      </div>
+      
       {/* <button
         onClick={() => {
           fetchPokemons();
@@ -105,32 +74,19 @@ export const Project = ({}) => {
         See results
       </button> */}
       <CustomButton
-        text="See Results"
+        text="Search bar for single pokemon"
         onClick={() => {
-          fetchPokemons();
-          handleInitialChange();
+          goToNamePokemon();
         }}
         styles={{ margin: "0 auto 10px auto" }}
       />
-      {!initial && (
-        <>
-          <p>---------------------------------</p>
-          <h4>Scroll through the page to see all the pokémons</h4>
-          <p>---------------------------------</p>
-          {/* <CustomButton
-            text="Next page (só para testes)"
-            onClick={() => {
-              goToPokeDetails();
-            }}
-            styles={{ margin: "0 auto 10px auto" }}
-          /> */}
-          <div style={{ width: "100%", gap: "20px" }}>
-            {pokemons.map((pokemon) => (
-              <PokemonCard key={pokemon.id} pokemon={pokemon} type="small" />
-            ))}
-          </div>
-        </>
-      )}
+      <CustomButton
+        text="Search list of pokemons"
+        onClick={() => {
+          goToListPokemons();
+        }}
+        styles={{ margin: "0 auto 10px auto" }}
+      />
     </AppScreen>
   );
 };

@@ -6,6 +6,8 @@ import {
   HomeScreen,
   PokeDetails,
   Project,
+  ShowList,
+  SearchName
 } from "@screens";
 import { ScreenPaths } from "@constants";
 import React from "react";
@@ -54,6 +56,14 @@ export const App = () => {
         <Route
           path={ScreenPaths.project.favorites}
           element={<FavoritesScreen />}
+        />
+        <Route
+          path={ScreenPaths.project.name_pokemon}
+          element={<SearchName />}
+        />
+        <Route
+          path={ScreenPaths.project.list_pokemons}
+          element={<ShowList />}
         />
       </Routes>
     </div>

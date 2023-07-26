@@ -9,18 +9,22 @@ export const FavoritesScreen = () => {
       <img
         src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png"
         alt="PokeAPI"
-        width="60%"
+        width="55%"
       />
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/f/fd/A_star.png"
         alt="Star"
         width="10%"
       />
-      {!favorites && (
-        <p>
-          You have no favorites. Go your back to your last page and select your
-          favorite pokemons!
-        </p>
+      {(favorites===undefined || favorites.length == 0) && (
+        <>
+          <p>-------------------------------</p>
+          <p>
+            You have no favorites. Go your back to your last page and select
+            your favorite pokemons!
+          </p>
+          <p>-------------------------------</p>
+        </>
       )}
       <div style={{ width: "100%", gap: "20px" }}>
         {favorites.map((pokemon) => (

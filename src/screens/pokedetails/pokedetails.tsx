@@ -14,7 +14,7 @@ export const PokeDetails = () => {
         <img
           src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png"
           alt="PokeAPI"
-          width="60%"
+          width="55%"
         />
         {pokemon != undefined && <PokemonCard pokemon={pokemon} type="full" />}
       </AppScreen>

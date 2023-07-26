@@ -20,10 +20,20 @@ export const useHomeHelper = () => {
     goTo(ScreenPaths.project.pokeapi);
   };
 
+  const handleGoToNamePokemon = () => {
+    goTo(ScreenPaths.project.name_pokemon);
+  };
+
+  const handleGoListPokemon = () => {
+    goTo(ScreenPaths.project.list_pokemons);
+  };
+
   return {
     goToChallenge1: handleGoToChallenge1,
     goToChallenge2: handleGoToChallenge2,
     goToChallenge2_5: handleGoToChallenge2_5,
     goToProject: handleGoToProject,
+    goToNamePokemon: handleGoToNamePokemon,
+    goToListPokemon: handleGoListPokemon,
   };
 };

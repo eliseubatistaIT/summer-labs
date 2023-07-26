@@ -50,7 +50,6 @@ export const ShowList = () => {
             Write in the 2 spaces below to search for the pokemons you want
           </h4>
           <h4> </h4>
-          <h4></h4>
         </div>
 
         <p>---------------------------------</p>
